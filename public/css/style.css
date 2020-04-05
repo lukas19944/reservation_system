@@ -1,0 +1,280 @@
+/*global---------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+
+}
+
+html, body{
+    height: 100%;
+    background: linear-gradient(240deg, #1BC3E2, #0043CA) fixed;
+
+}
+
+a{
+    text-decoration: none;
+    color: #ececec;
+    cursor:pointer;
+    transition: 0.3s;
+}
+ul{
+    list-style: none;
+}
+a:hover{
+    color: #fda820;
+}
+.float-right{
+    float: right;
+}
+
+/*local  ----------------------------------*/
+
+.login-container{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-container{
+    margin-bottom: 20px;
+    text-align: center;
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+.container{
+    position: relative;
+    min-height: 100%;
+    font-size: 20px;
+    color: #ececec;
+}
+nav{
+    margin: 20px 20px;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+nav:after{
+    clear: both;
+    content: "";
+    width: 80%;
+    margin-top: 20px;
+    border-bottom: 2px solid #ececec;
+
+}
+nav ul{
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+    font-weight: bold;
+}
+.main{
+    display: flex;
+
+    margin: 0 auto;
+}
+.main-title{
+    width: 800px;
+    margin: 120px auto;
+    text-align: center;
+}
+.choose-info{
+    width: 100%;
+    height: 80px;
+    margin: 20px 0;
+    position: relative;
+    text-align: center;
+}
+
+.choose-info a{
+    position: absolute;
+    right: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 10px;
+    background: #fda820;
+    border-radius: 10px;
+
+
+}
+.choose-info a:hover{
+    color: #ECECEC;
+}
+.choose-info h2{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.choose-info form{
+    position: absolute;
+    right: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+
+.workplaces-list {
+    width: 80%;
+    margin: 0 auto;
+
+
+}
+.workplaces-list ul{
+    display: flex;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+}
+.workplaces-list ul li{
+    width:40%;
+    word-wrap: break-word;
+    font-size: 16px;
+
+}
+
+
+.add-workplace{
+    width: 670px;
+}
+
+.number{
+    font-weight: bold;
+    font-size: 24px;
+}
+.form-column{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.form-label{
+    width:250px;
+}
+.form-input{
+    width: 400px;
+}
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+.form-label{
+    margin: 5px 10px 5px 0;
+}
+.form-inline label {
+
+    width: 250px;
+    margin: 5px 10px 5px 0;
+
+}
+.form-inline input {
+    width: 400px;
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.form-inline textarea{
+    width: 400px;
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.form-inline select{
+    width: 400px;
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.form-check{
+
+}
+.btn{
+    margin: 10px 10px 0 0;
+    width: 80px;
+    height: 40px;
+    color: #ECECEC;
+    font-size: 18px;
+    background: #fda820;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.btn:hover{
+    box-shadow: 5px 5px 5px #3d3d3d,
+                -3px -3px 5px #a6a6a6;
+    transition: 0.3s;
+
+}
+.add-select{
+    font-size: 14px;
+}
+.equipments-list{
+    margin-left: 20px;
+    width: 400px;
+
+}
+
+table{
+    font-size: 16px;
+
+}
+table td{
+    padding: 10px;
+    text-align: center;
+}
+.danger{
+    background: red;
+}
+.change-number{
+    padding: 5px;
+    font-size: 14px;
+
+}
+
+.workplace{
+    display: flex;
+    justify-content: space-around;
+    color: #ECECE8;
+    margin: 0 auto 40px auto ;
+}
+.response{
+    width: 400px;
+
+}
+
+.equipments-table{
+    text-align: center;
+}
+
+.equipments-table td, .equipments-table th{
+    color: white;
+    padding: 10px;
+
+
+}
+.error-message{
+    color: red;
+    text-align: center;
+}
+
+
+
