@@ -26,7 +26,7 @@ Route::resource('/equipment','EquipmentController');
 
 Auth::routes();
 
-//Route::get('/', 'HomeController@index')->name('home');
+
 
 Route::prefix('reservation')->name('reservation')->group(function (){
     Route::get('list', 'ReservationController@list')->name('.list');

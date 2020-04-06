@@ -43,6 +43,7 @@ class EquipmentController extends Controller
      */
     public function store(Request $request)
     {
+
         $rules=[
             'designation'=>'required|integer|unique:equipments,designation',
             'type'=>'string',
@@ -59,22 +60,17 @@ class EquipmentController extends Controller
                 'unique'=> 'Stanowisko o takim numerze juz istnieje!'
             ];
         $this->validate($request,$rules,$messages);
-
+        try{
+            $equipment=Equipment::create($request->all());
+        }catch (\Exception $e){
+            abort(500,$e->getMessage());
+        }
 
         return redirect(route('equipment.index'));
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Equipment  $equipment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Equipment $equipment)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -113,8 +109,11 @@ class EquipmentController extends Controller
             'unique'=> 'Stanowisko o takim numerze juz istnieje!'
         ];
         $this->validate($request,$rules,$messages);
-
-        $equipment->update($request->all());
+        try {
+            $equipment->update($request->all());
+        }catch (\Exception $e){
+            abort(500,$e->getMessage());
+        }
 
         return redirect(route('equipment.index'));
 
@@ -128,13 +127,20 @@ class EquipmentController extends Controller
      */
     public function destroy(Equipment $equipment)
     {
-        $equipment->delete();
+        try {
+            $equipment->delete();
+        }catch (\Exception $e){
+            abort(500,$e->getMessage());
+        }
     }
 
     public function detach(Request $request){
-        $equipment=Equipment::where('id',$request->id)->first();
-        $equipment->update(['workplace_id'=>null]);
-
+        try {
+            $equipment = Equipment::where('id', $request->id)->first();
+            $equipment->update(['workplace_id' => null]);
+        }catch (\Exception $e){
+            abort(500,$e->getMessage());
+        }
     }
 
 }

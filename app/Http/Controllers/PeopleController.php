@@ -9,8 +9,11 @@ class PeopleController extends Controller
 {
 
     public static function add($people_details){
-
-        $people=People::create($people_details);
+        try {
+            $people = People::create($people_details);
+        }catch (\Exception $e){
+            abort(500,$e->getMessage());
+        }
 
         return $people;
     }

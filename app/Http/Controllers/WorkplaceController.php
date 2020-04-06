@@ -55,22 +55,17 @@ class WorkplaceController extends Controller
         ];
         $this->validate($request,$rules,$messages);
 
-        $workplace=Workplace::create($request->only('number', 'description'));
+        try {
+            $workplace = Workplace::create($request->only('number', 'description'));
+        }catch (\Exception $e){
+            abort(500,$e->getMessage());
+        }
 
         return redirect(route('workplace.index'));
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Workplace  $workplace
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Workplace $workplace)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -80,9 +75,12 @@ class WorkplaceController extends Controller
      */
     public function edit(Workplace $workplace)
     {
-
-        $equipments=Equipment::all();
-        $workplace_equipments=$workplace->equipments()->get();
+        try {
+            $equipments = Equipment::all();
+            $workplace_equipments = $workplace->equipments()->get();
+        }catch (\Exception $e){
+            abort(500,$e->getMessage());
+        }
 
 
 
@@ -113,12 +111,15 @@ class WorkplaceController extends Controller
         ];
 
         $this->validate($request,$rules,$messages);
+        try {
+            $workplace->update($request->only(['description']));
+            foreach ($request->equipments as $equipment) {
 
-        $workplace->update($request->only(['description']));
-        foreach ($request->equipments as $equipment){
-
-            $current_equipment=Equipment::where('id',$equipment)->first();
-            $current_equipment->update(['workplace_id'=>$workplace->id]);
+                $current_equipment = Equipment::where('id', $equipment)->first();
+                $current_equipment->update(['workplace_id' => $workplace->id]);
+            }
+        }catch (\Exception $e){
+            abort(500,$e->getMessage());
         }
         return redirect(route('workplace.index'));
     }
@@ -131,9 +132,12 @@ class WorkplaceController extends Controller
      */
     public function destroy(Workplace $workplace)
     {
-        $workplace->equipments()->update(['workplace_id'=>null]);
-        $workplace->delete();
-
+        try {
+            $workplace->equipments()->update(['workplace_id' => null]);
+            $workplace->delete();
+        }catch (\Exception $e){
+            abort(500,$e->getMessage());
+        }
         return redirect(route('workplace.index'));
     }
 }

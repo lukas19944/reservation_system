@@ -39,7 +39,7 @@
                 <input type="text" name="price" id="price">
             </div>
             <div class="form-inline">
-            <label for="description"> Opis stanowiska:</label>
+            <label for="description"> Opis:</label>
             <textarea name="description" id="description" cols="30" rows="10"></textarea>
             </div>
             @csrf

@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Log;
 
 class ReservationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['only'=>['list','show','destroy']]);
+    }
 
     public function list(){
         $reservations=Reservation::all()->sortByDesc('created_at');
@@ -83,16 +87,7 @@ class ReservationController extends Controller
         return view('reservation.show')->with('reservation', $reservation);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Reservation $reservation)
-    {
 
-    }
 
 
     /**
@@ -113,7 +108,7 @@ class ReservationController extends Controller
         redirect(route('reservation.list'));
     }
     public static function check_reservation($workplace_id,$date, $from_hours, $to_hours){
-        Log::info($date);
+
         $new_to_hours=$to_hours-0.1;
         $reservation=Reservation::where("date",$date)
             ->where("workplace_id",$workplace_id)
